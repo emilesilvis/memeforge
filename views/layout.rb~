@@ -1,0 +1,4 @@
+<html>
+<%= yied %>
+This is the standard layout.
+</html>
