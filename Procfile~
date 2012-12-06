@@ -1,1 +1,1 @@
-web: ruby mf.ruby -p $PORT
+web: ruby mf.rb -p $PORT

@@ -26,3 +26,7 @@ post '/bottom' do
 	session[:bottom] = params['bottom']
 	erb :meme
 end
+
+error do
+  'Sorry there was a nasty error - ' + env['sinatra.error'].name
+end

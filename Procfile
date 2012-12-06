@@ -1,1 +1,1 @@
-web: ruby mf.rb -p $PORT
+web: ruby mf.rb -e "production" -p $PORT
