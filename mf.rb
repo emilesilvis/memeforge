@@ -11,7 +11,7 @@ post '/upload' do
 	#@filename = Time.now.hour.to_s + '.jpg' #not yet unique
 	@filename = 'file.jpg'	
 	FileUtils.mkdir_p('public/uploads/' + @mxit.user_id)
-	FileUtils.move(params['file'][:tempfile].path,'public/uploads/' + @mxit.user_id + '/' + @filename)
+	FileUtils.move(params['file'][:tempfile].path,'public/uploads/' + @mxit.user_id + '/' + @filename, :force => true)
 	@path = 'uploads/' + @mxit.user_id + '/' + @filename
 	@top = params['top']
 	@bottom = params['bottom']

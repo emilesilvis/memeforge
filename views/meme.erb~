@@ -1,1 +1,1 @@
-<img src="http://localhost:4567/<%= @path %>" />
+<img src="http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/<%= @path %>&t1=<%= @top %>&t2=<%= @bottom %>" />
