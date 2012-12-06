@@ -1,10 +1,12 @@
 require 'sinatra'
 require 'fileutils'
 require_relative "mxit.rb"
+require 'gabba'
 
 enable :sessions
 
 get '/' do
+	Gabba::Gabba.new("UA-35092077-4", "http://safe-wildwood-3459.herokuapp.com").page_view("something", "track/me")
 	erb :image
 end
 
