@@ -1,1 +1,1 @@
-<img src="http://memecaptain.com/i?u=http://image.guardian.co.uk/sys-images/Guardian/Pix/gallery/2002/01/03/monkey300.jpg&t1=some+top+text&t2=some+bottom+text" />
+<img src="http://memecaptain.com/i?u=<%=@path%>&t1=some+top+text&t2=some+bottom+text" />
