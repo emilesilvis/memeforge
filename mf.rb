@@ -1,14 +1,15 @@
 require 'sinatra'
 require 'fileutils'
 require_relative "mxit.rb"
-require 'rack-google-analytics'
-
-use Rack::GoogleAnalytics, :tracker => 'UA-35092077-4'
+require 'gabba'
 
 enable :sessions
 
 get '/' do
+	 g = Gabba::Gabba.new("UA-35092077-4","http://safe-wildwood-3459.herokuapp.com")
+	g.page_view("Home","/")
 	erb :image
+	
 end
 
 post '/image' do

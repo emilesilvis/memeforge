@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'fileutils'
 require_relative "mxit.rb"
-use Rack::GoogleAnalytics, :tracker => 'UA-35092077-4'
+require 'gabba'
 
 enable :sessions
 
