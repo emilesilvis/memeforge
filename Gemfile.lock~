@@ -16,5 +16,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+<<<<<<< HEAD
   gabba
+=======
+  rack-google-analytics
+>>>>>>> 56c283ff2f58c3a9b37fd09b3586866021830251
   sinatra
