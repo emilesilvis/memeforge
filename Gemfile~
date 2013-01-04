@@ -1,7 +1,0 @@
-source :rubygems
-gem 'sinatra'
-<<<<<<< HEAD
-gem 'gabba'
-=======
-gem 'rack-google-analytics'
->>>>>>> 56c283ff2f58c3a9b37fd09b3586866021830251

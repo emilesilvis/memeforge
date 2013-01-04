@@ -1,2 +1,0 @@
-<img src="http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/<%= session[:path] %>&t1=<%= session[:top] %>&t2=<%= session[:bottom] %>" width="auto" height="300px" />
-<a href="/">Again</a>
