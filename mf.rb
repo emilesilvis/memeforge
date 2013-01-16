@@ -2,6 +2,7 @@ require 'sinatra'
 require 'fileutils'
 require_relative "mxit.rb" #Toby's Mxit library
 require 'gabba' #gem used to track Google Analytics page views
+require 'net/http'
 
 enable :sessions
 
@@ -20,11 +21,11 @@ get '/image' do
 end
 
 post '/image' do
-	@mxit = Mxit.new(request.env) #Initailise Mxit object. This object is used to access a range of Mxit-specfic data, such as the user's ID.
-	@filename = Time.now.year.to_s + '-' + Time.now.month.to_s + '-' + Time.now.day.to_s + '-' + Time.now.hour.to_s + '-' + Time.now.min.to_s + '-' + Time.now.sec.to_s + '-' + params['file'][:filename] #Creates a unique filename by concatenating a timestamp and the filename	
-	FileUtils.mkdir_p('public/uploads/' + @mxit.user_id) #Creates or moves to a directory with the same name as the current user
-	FileUtils.move(params['file'][:tempfile].path,'public/uploads/' + @mxit.user_id + '/' + @filename, :force => true) #Move the file from the temporary location to the newly created directory
-	session[:path] = 'uploads/' + @mxit.user_id + '/' + @filename #Saves the path of the image to the path session object
+
+	session[:temp_file_name] = Random.rand(1000).to_s
+	
+	FileUtils.move(params['file'][:tempfile].path,'public/' + session[:temp_file_name], :force => true)
+
 	erb :top
 end
 
@@ -40,6 +41,15 @@ post '/bottom' do
 	erb :meme
 end
 
-get '/dl' do
+get '/foo' do
+	Net::HTTP.start("printmatic.net") do |http|
+	resp = http.get("http://printmatic.net/wp-content/uploads/2012/12/Bird.jpg")		
+	    open("foo.jpg", "wb") do |file|
+		file.write(resp.body)
+	    end
+	end
+end
+
+get '/send' do
 	send_file 'monkey.jpg'
 end
