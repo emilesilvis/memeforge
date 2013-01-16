@@ -39,3 +39,7 @@ post '/bottom' do
 	session[:bottom] = params['bottom'] #Save value of 'bottom' input to session object
 	erb :meme
 end
+
+get '/dl' do
+	send_file 'monkey.jpg'
+end

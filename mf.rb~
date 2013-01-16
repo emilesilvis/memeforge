@@ -25,8 +25,7 @@ post '/image' do
 	FileUtils.mkdir_p('public/uploads/' + @mxit.user_id) #Creates or moves to a directory with the same name as the current user
 	FileUtils.move(params['file'][:tempfile].path,'public/uploads/' + @mxit.user_id + '/' + @filename, :force => true) #Move the file from the temporary location to the newly created directory
 	session[:path] = 'uploads/' + @mxit.user_id + '/' + @filename #Saves the path of the image to the path session object
-	erb :top 
->>>>>>> 1e035a356eaaf71d20ade7334b6798676d11eeea
+	erb :top
 end
 
 post '/top' do
@@ -39,4 +38,8 @@ post '/bottom' do
 	GoogleAnalyticsTracker.page_view("Bottom","/bottom")
 	session[:bottom] = params['bottom'] #Save value of 'bottom' input to session object
 	erb :meme
+end
+
+get '/dl' do
+	send_file 'monkey.jpg'
 end
