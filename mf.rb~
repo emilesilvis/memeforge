@@ -20,20 +20,6 @@ get '/image' do
 end
 
 post '/image' do
-<<<<<<< HEAD
-	g.page_view("Image","/image") #Track page view for Image page
-
-	@mxit = Mxit.new(request.env) #Initailise Mxit object. This object is used to access a range of Mxit-specfic data, such as the user's ID.
-
-	#@filename = Time.now.year.to_s + '-' + Time.now.month.to_s + '-' + Time.now.day.to_s + '-' + Time.now.hour.to_s + '-' + Time.now.min.to_s + '-' + Time.now.sec.to_s + '-' + params['file'][:filename] #Creates a unique filename by concatenating a timestamp and the filename	
-	#FileUtils.mkdir_p('public/uploads/' + @mxit.user_id) #Creates or moves to a directory with the same name as the current user
-	#FileUtils.move(params['file'][:tempfile].path,'public/uploads/' + @mxit.user_id + '/' + @filename, :force => true) #Move the file from the temporary location to the newly created directory
-	#session[:path] = 'uploads/' + @mxit.user_id + '/' + @filename #Saves the path of the image to the path session object
-
-	session[:path] = params['file'][:tempfile].path
-
-	erb :top #Reders the Top view
-=======
 	@mxit = Mxit.new(request.env) #Initailise Mxit object. This object is used to access a range of Mxit-specfic data, such as the user's ID.
 	@filename = Time.now.year.to_s + '-' + Time.now.month.to_s + '-' + Time.now.day.to_s + '-' + Time.now.hour.to_s + '-' + Time.now.min.to_s + '-' + Time.now.sec.to_s + '-' + params['file'][:filename] #Creates a unique filename by concatenating a timestamp and the filename	
 	FileUtils.mkdir_p('public/uploads/' + @mxit.user_id) #Creates or moves to a directory with the same name as the current user
