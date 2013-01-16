@@ -3,10 +3,10 @@ require 'fileutils'
 require_relative "mxit.rb" #Toby's Mxit library
 require 'gabba' #gem used to track Google Analytics page views
 
+enable :sessions
 
 before do
 	GoogleAnalyticsTracker = Gabba::Gabba.new("UA-35092077-4","http://safe-wildwood-3459.herokuapp.com")
-	enable :sessions
 end
 
 get '/' do
@@ -15,11 +15,11 @@ get '/' do
 end
 
 get '/image' do
+	GoogleAnalyticsTracker.page_view("Image","/image")
 	erb  :image
 end
 
 post '/image' do
-	GoogleAnalyticsTracker.page_view("Image","/image")
 	@mxit = Mxit.new(request.env) #Initailise Mxit object. This object is used to access a range of Mxit-specfic data, such as the user's ID.
 	@filename = Time.now.year.to_s + '-' + Time.now.month.to_s + '-' + Time.now.day.to_s + '-' + Time.now.hour.to_s + '-' + Time.now.min.to_s + '-' + Time.now.sec.to_s + '-' + params['file'][:filename] #Creates a unique filename by concatenating a timestamp and the filename	
 	FileUtils.mkdir_p('public/uploads/' + @mxit.user_id) #Creates or moves to a directory with the same name as the current user
