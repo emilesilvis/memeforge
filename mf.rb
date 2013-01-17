@@ -54,17 +54,19 @@ post '/bottom' do
 	s3 = AWS::S3.new
 	bucket = s3.buckets['emilesilvis']
 	@mxit = Mxit.new(request.env)
-	object = bucket.objects[@mxit.user_id + '/' + session[:temp_file_name]]
+	object = bucket.objects['memeforge/' + @mxit.user_id + '/' + session[:temp_file_name]]
 	object.write(Pathname.new('public/' + session[:temp_file_name]))		
 
 	erb :meme
 end
 
-get '/send' do
-	send_file 'monkey.jpg'
-end
-
-get '/request' do
+get '/mymemes' do
+	a = []
 	@mxit = Mxit.new(request.env)
-	@mxit.nickname.inspect
+	s3 = AWS::S3.new
+	bucket = s3.buckets['emilesilvis']
+	bucket.objects.with_prefix('memeforge/' + @mxit.user_id).each do |obj|
+		a.push(obj.key)
+	end
+	a.inspect
 end
