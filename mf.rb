@@ -27,7 +27,7 @@ end
 
 post '/image' do
 
-	session[:file_name] = Time.now.year.to_s + '-' + Time.now.month.to_s + '-' + Time.now.day.to_s + '-' + Time.now.hour.to_s + '-' + Time.now.min.to_s + '-' + Time.now.sec.to_s + '-' + '.jpg'
+	session[:file_name] = Time.now.year.to_s + '-' + Time.now.month.to_s + '-' + Time.now.day.to_s + '-' + Time.now.hour.to_s + '-' + Time.now.min.to_s + '-' + Time.now.sec.to_s + '.jpg'
 
 	FileUtils.move(params['file'][:tempfile].path,'public/temp-' + session[:file_name], :force => true)
 
@@ -59,7 +59,7 @@ post '/bottom' do
 	object = bucket.objects['memeforge/' + @mxit.user_id + '/' + session[:file_name]]
 	object.write(Pathname.new('public/meme-' + session[:file_name]))
 
-	FileUtils.remove('public/meme-' + session[:file_name])
+	#FileUtils.remove('public/meme-' + session[:file_name])
 			
 	erb :meme
 end
