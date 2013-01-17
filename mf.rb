@@ -23,7 +23,7 @@ end
 post '/image' do
 
 	session[:temp_file_name] = Random.rand(1000).to_s
-		
+
 	FileUtils.move(params['file'][:tempfile].path,'public/' + session[:temp_file_name], :force => true)
 
 	erb :top
@@ -43,7 +43,7 @@ post '/bottom' do
 	Net::HTTP.start("memecaptain.com") do |http|
 	resp = http.get("http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/" + session[:temp_file_name] + "&t1=" + session[:top] + "&t2=" + session[:bottom])
 	#resp = http.get('http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/793&t1=d&t2=f')		
-	    open(session[:temp_file_name], "wb") do |file|
+	    open(session['public/' + 'meme-' + :temp_file_name], "wb") do |file|
 		file.write(resp.body)
 		#http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/793&t1=d&t2=f
 	    end
