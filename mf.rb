@@ -23,7 +23,7 @@ end
 post '/image' do
 
 	session[:temp_file_name] = Random.rand(1000).to_s
-	
+		
 	FileUtils.move(params['file'][:tempfile].path,'public/' + session[:temp_file_name], :force => true)
 
 	erb :top
@@ -38,16 +38,19 @@ end
 post '/bottom' do
 	GoogleAnalyticsTracker.page_view("Bottom","/bottom")
 	session[:bottom] = params['bottom'] #Save value of 'bottom' input to session object
-	erb :meme
-end
 
-get '/foo' do
-	Net::HTTP.start("printmatic.net") do |http|
-	resp = http.get("http://printmatic.net/wp-content/uploads/2012/12/Bird.jpg")		
-	    open("foo.jpg", "wb") do |file|
+
+	Net::HTTP.start("memecaptain.com") do |http|
+	resp = http.get("http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/" + session[:temp_file_name] + "&t1=" + session[:top] + "&t2=" + session[:bottom])
+	#resp = http.get('http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/793&t1=d&t2=f')		
+	    open(session[:temp_file_name], "wb") do |file|
 		file.write(resp.body)
+		#http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/793&t1=d&t2=f
 	    end
 	end
+
+	erb :meme
+
 end
 
 get '/send' do
