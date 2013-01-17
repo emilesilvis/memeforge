@@ -3,11 +3,16 @@ require 'fileutils'
 require_relative "mxit.rb" #Toby's Mxit library
 require 'gabba' #gem used to track Google Analytics page views
 require 'net/http'
+require 'aws-sdk'
 
 enable :sessions
 
-before do
+configure do
 	GoogleAnalyticsTracker = Gabba::Gabba.new("UA-35092077-4","http://safe-wildwood-3459.herokuapp.com")
+
+	AWS.config(
+	  :access_key_id => 'AKIAJ47AJAI7J7EGRDAQ',
+	  :secret_access_key => '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')
 end
 
 get '/' do
@@ -39,20 +44,27 @@ post '/bottom' do
 	GoogleAnalyticsTracker.page_view("Bottom","/bottom")
 	session[:bottom] = params['bottom'] #Save value of 'bottom' input to session object
 
-
 	Net::HTTP.start("memecaptain.com") do |http|
-	resp = http.get("http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/" + session[:temp_file_name] + "&t1=" + session[:top] + "&t2=" + session[:bottom])
-	#resp = http.get('http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/793&t1=d&t2=f')		
-	    open('public/' + 'meme-' + session[:temp_file_name], "wb") do |file|
-		file.write(resp.body)
-		#http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/793&t1=d&t2=f
+		resp = http.get("http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/" + session[:temp_file_name] + "&t1=" + session[:top] + "&t2=" + session[:bottom])
+		open('public/' + session[:temp_file_name], "wb") do |file|
+			file.write(resp.body)
 	    end
 	end
 
-	erb :meme
+	s3 = AWS::S3.new
+	bucket = s3.buckets['emilesilvis']
+	@mxit = Mxit.new(request.env)
+	object = bucket.objects[@mxit.user_id + '/' + session[:temp_file_name]]
+	object.write(Pathname.new('public/' + session[:temp_file_name]))		
 
+	erb :meme
 end
 
 get '/send' do
 	send_file 'monkey.jpg'
+end
+
+get '/request' do
+	@mxit = Mxit.new(request.env)
+	@mxit.nickname.inspect
 end
