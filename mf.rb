@@ -27,9 +27,9 @@ end
 
 post '/image' do
 
-	session[:temp_file_name] = Random.rand(1000).to_s
+	session[:file_name] = Time.now.year.to_s + '-' + Time.now.month.to_s + '-' + Time.now.day.to_s + '-' + Time.now.hour.to_s + '-' + Time.now.min.to_s + '-' + Time.now.sec.to_s + '-' + '.jpg'
 
-	FileUtils.move(params['file'][:tempfile].path,'public/' + session[:temp_file_name], :force => true)
+	FileUtils.move(params['file'][:tempfile].path,'public/temp-' + session[:file_name], :force => true)
 
 	erb :top
 end
@@ -45,18 +45,22 @@ post '/bottom' do
 	session[:bottom] = params['bottom'] #Save value of 'bottom' input to session object
 
 	Net::HTTP.start("memecaptain.com") do |http|
-		resp = http.get("http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/" + session[:temp_file_name] + "&t1=" + session[:top] + "&t2=" + session[:bottom])
-		open('public/' + session[:temp_file_name], "wb") do |file|
+		resp = http.get("http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/temp-" + session[:file_name] + "&t1=" + session[:top] + "&t2=" + session[:bottom])
+		open('public/meme-' + session[:file_name], "wb") do |file|
 			file.write(resp.body)
 	    end
 	end
 
+	FileUtils.remove('public/temp-' + session[:file_name])
+
 	s3 = AWS::S3.new
 	bucket = s3.buckets['emilesilvis']
 	@mxit = Mxit.new(request.env)
-	object = bucket.objects['memeforge/' + @mxit.user_id + '/' + session[:temp_file_name]]
-	object.write(Pathname.new('public/' + session[:temp_file_name]))		
+	object = bucket.objects['memeforge/' + @mxit.user_id + '/' + session[:file_name]]
+	object.write(Pathname.new('public/meme-' + session[:file_name]))
 
+	FileUtils.remove('public/meme-' + session[:file_name])
+			
 	erb :meme
 end
 
