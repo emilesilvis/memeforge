@@ -1,3 +1,6 @@
+#need to move stuff to helpers
+#add policy to bucket to make objects public https://forums.aws.amazon.com/thread.jspa?threadID=62835&tstart=25
+
 require 'sinatra'
 require 'fileutils'
 require_relative "mxit.rb" #Toby's Mxit library
