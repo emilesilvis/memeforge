@@ -1,5 +1,7 @@
 #need to move stuff to helpers
-#add policy to bucket to make objects public https://forums.aws.amazon.com/thread.jspa?threadID=62835&tstart=25
+#display bucket
+#use AWS SES for feedback form
+#display banner and cache for a minute
 
 require 'sinatra'
 require 'fileutils'
@@ -76,4 +78,18 @@ get '/mymemes' do
 		a.push(obj.key)
 	end
 	a.inspect
+end
+
+get '/feedback' do
+	erb :feedback
+end
+
+post '/feedback' do
+	ses = AWS::SimpleEmailService.new
+	ses.send_email(
+	  :subject => 'MemeForge feedback',
+	  :from => 'emile@silvis.co.za',
+	  :to => 'emile@silvis.co.za',
+	  :body_text => params['feedback'])
+	erb "</br>Thanks for the feedback! </br> <a href='/'>Home</a>"
 end
