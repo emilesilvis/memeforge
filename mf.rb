@@ -60,7 +60,7 @@ post '/bottom' do
 	@mxit = Mxit.new(request.env)
 	object = bucket.objects['memeforge/' + @mxit.user_id + '/' + session[:file_name]]
 	object.write(Pathname.new('public/meme-' + session[:file_name]))
-	FileUtils.remove('public/meme-' + session[:file_name])	
+	#FileUtils.remove('public/meme-' + session[:file_name])	it won't serve otherwise
 	erb :meme
 end
 
