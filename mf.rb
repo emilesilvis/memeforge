@@ -96,11 +96,12 @@ get '/feedback' do
 end
 
 post '/feedback' do
+	@mxit = Mxit.new(request.env)
 	ses = AWS::SimpleEmailService.new
 	ses.send_email(
 	  :subject => 'MemeForge feedback',
 	  :from => 'emile@silvis.co.za',
 	  :to => 'emile@silvis.co.za',
-	  :body_text => params['feedback'])
-	erb "</br> Thanks for the feedback! </br> <a href='/'>Home</a>"
+	  :body_text => params['feedback'] + ' - ' + @mxit.user_id)
+	erb "Thanks! :)"
 end
