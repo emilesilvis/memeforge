@@ -50,9 +50,9 @@ post '/bottom' do
 	session[:bottom] = params['bottom'] #Save value of 'bottom' input to session object
 
 	Net::HTTP.start("memecaptain.com") do |http|
-		resp = http.get("http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/temp-" + session[:file_name] + "&t1=" + session[:top] + "&t2=" + session[:bottom])
+		response = http.get("http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/temp-" + session[:file_name] + "&t1=" + session[:top] + "&t2=" + session[:bottom])
 		open('public/meme-' + session[:file_name], "wb") do |file|
-			file.write(resp.body)
+			file.write(response.body)
 	    end
 	end
 
@@ -104,4 +104,17 @@ post '/feedback' do
 	  :to => 'emile@silvis.co.za',
 	  :body_text => params['feedback'] + ' - ' + @mxit.user_id)
 	erb "Thanks! :)"
+end
+
+get '/ad' do
+	get_ad
+end
+
+helpers do
+	def get_ad
+		Net::HTTP.start("serve.mixup.hapnic.com") do |http|
+			response = http.get("http://serve.mixup.hapnic.com/8215822")
+			return response.body
+		end
+	end	
 end
