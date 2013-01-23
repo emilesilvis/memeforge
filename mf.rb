@@ -25,7 +25,7 @@ end
 
 get '/' do
 	GoogleAnalyticsTracker.page_view("Home","/")
-	erb :home
+	erb :home, :layout => false
 end
 
 get '/image' do
