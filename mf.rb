@@ -2,6 +2,9 @@
 #display bucket
 #use AWS SES for feedback form
 #display banner and cache for a minute
+#put banner just on home screen
+#remove 'home' menu button from layout
+#put size limits in 'mymemes'
 
 require 'sinatra'
 require 'fileutils'
@@ -104,10 +107,6 @@ post '/feedback' do
 	  :to => 'emile@silvis.co.za',
 	  :body_text => params['feedback'] + ' - ' + @mxit.user_id)
 	erb "Thanks! :)"
-end
-
-get '/ad' do
-	get_ad
 end
 
 helpers do
