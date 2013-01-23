@@ -3,10 +3,10 @@ require 'cgi'
 class Mxit
     @@mock_mxit_headers = {
         "HTTP_X_MXIT_LOCATION"=>"ZA,,06,,,Germiston,83354,81131486,7efb4d", #
-        "HTTP_X_MXIT_LOGIN"=>"tobykurien", 
-        "HTTP_X_MXIT_USERID_R"=>"m36264391002", #
+        "HTTP_X_MXIT_LOGIN"=>"emilesilvis7", 
+        "HTTP_X_MXIT_USERID_R"=>"web_client", #
         "HTTP_X_MXIT_HOME"=>"http://aws1.tobykurien.com/app", 
-        "HTTP_X_MXIT_NICK"=>"Toby+Kurien", #
+        "HTTP_X_MXIT_NICK"=>"Emile+Silvis", #
         #"HTTP_X_MXIT_USER_INPUT"=>"This+is+my+message+", #
         "HTTP_X_MXIT_PROFILE"=>"en,ZA,1976-05-12,Male,1", #
         "HTTP_X_MXIT_CONTACT"=>"gauteng_events", #

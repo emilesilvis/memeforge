@@ -70,14 +70,25 @@ post '/bottom' do
 end
 
 get '/mymemes' do
-	a = []
+	@memes = []
 	@mxit = Mxit.new(request.env)
 	s3 = AWS::S3.new
 	bucket = s3.buckets['emilesilvis']
-	bucket.objects.with_prefix('memeforge/' + @mxit.user_id).each do |obj|
-		a.push(obj.key)
+	bucket.objects.with_prefix('memeforge/' + @mxit.user_id).each do |object|
+		@memes.push(object.key)
 	end
-	a.inspect
+	@memes.delete('memeforge/' + @mxit.user_id + '/')
+	erb :mymemes
+end
+
+get '/allmemes' do
+	@memes = []
+	s3 = AWS::S3.new
+	bucket = s3.buckets['emilesilvis']
+	bucket.objects.each do |object|
+		@memes.push(object.key)
+	end
+	erb :mymemes
 end
 
 get '/feedback' do
@@ -91,5 +102,5 @@ post '/feedback' do
 	  :from => 'emile@silvis.co.za',
 	  :to => 'emile@silvis.co.za',
 	  :body_text => params['feedback'])
-	erb "</br>Thanks for the feedback! </br> <a href='/'>Home</a>"
+	erb "</br> Thanks for the feedback! </br> <a href='/'>Home</a>"
 end
