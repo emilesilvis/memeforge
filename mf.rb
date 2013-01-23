@@ -17,10 +17,10 @@ enable :sessions
 
 configure do
 	GoogleAnalyticsTracker = Gabba::Gabba.new("UA-35092077-4","http://safe-wildwood-3459.herokuapp.com")
-
 	AWS.config(
 	  :access_key_id => 'AKIAJ47AJAI7J7EGRDAQ',
 	  :secret_access_key => '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')
+
 end
 
 get '/' do
@@ -34,11 +34,8 @@ get '/image' do
 end
 
 post '/image' do
-
 	session[:file_name] = Time.now.year.to_s + '-' + Time.now.month.to_s + '-' + Time.now.day.to_s + '-' + Time.now.hour.to_s + '-' + Time.now.min.to_s + '-' + Time.now.sec.to_s + '.jpg'
-
 	FileUtils.move(params['file'][:tempfile].path,'public/temp-' + session[:file_name], :force => true)
-
 	erb :top
 end
 
@@ -51,24 +48,19 @@ end
 post '/bottom' do
 	GoogleAnalyticsTracker.page_view("Bottom","/bottom")
 	session[:bottom] = params['bottom'] #Save value of 'bottom' input to session object
-
 	Net::HTTP.start("memecaptain.com") do |http|
 		response = http.get("http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/temp-" + session[:file_name] + "&t1=" + session[:top] + "&t2=" + session[:bottom])
 		open('public/meme-' + session[:file_name], "wb") do |file|
 			file.write(response.body)
 	    end
 	end
-
 	FileUtils.remove('public/temp-' + session[:file_name])
-
 	s3 = AWS::S3.new
 	bucket = s3.buckets['emilesilvis']
 	@mxit = Mxit.new(request.env)
 	object = bucket.objects['memeforge/' + @mxit.user_id + '/' + session[:file_name]]
 	object.write(Pathname.new('public/meme-' + session[:file_name]))
-
-	#FileUtils.remove('public/meme-' + session[:file_name])
-			
+	FileUtils.remove('public/meme-' + session[:file_name])	
 	erb :meme
 end
 
@@ -107,6 +99,13 @@ post '/feedback' do
 	  :to => 'emile@silvis.co.za',
 	  :body_text => params['feedback'] + ' - ' + @mxit.user_id)
 	erb "Thanks! :)"
+end
+
+get '/stats' do
+	s3 = AWS::S3.new
+	bucket = s3.buckets['emilesilvis']
+	erb 'Number of memes: ' + bucket.objects.count.to_s
+
 end
 
 helpers do
