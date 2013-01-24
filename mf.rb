@@ -1,10 +1,9 @@
 #need to move stuff to helpers
-#display bucket
-#use AWS SES for feedback form
 #display banner and cache for a minute
-#put banner just on home screen
-#remove 'home' menu button from layout
-#put size limits in 'mymemes'
+#delete memes
+#put on github but remove AWS secret key
+#porn detector?
+#gallery / phone photo integration!
 
 require 'sinatra'
 require 'fileutils'

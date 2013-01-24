@@ -11,63 +11,7 @@
 			"file": "mf.rb",
 			"settings":
 			{
-				"buffer_size": 2296,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/emilesilvis/Projects/cucumber_play/Gemfile",
-			"settings":
-			{
-				"buffer_size": 97,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/emilesilvis/Projects/aws-sdk-ruby/samples/config.yml",
-			"settings":
-			{
-				"buffer_size": 195,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/emilesilvis/Projects/aws-sdk-ruby/samples/s3/upload_file.rb",
-			"settings":
-			{
-				"buffer_size": 1238,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Gemfile",
-			"settings":
-			{
-				"buffer_size": 70,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/meme.erb",
-			"settings":
-			{
-				"buffer_size": 214,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/home.erb",
-			"settings":
-			{
-				"buffer_size": 90,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/image.erb",
-			"settings":
-			{
-				"buffer_size": 171,
+				"buffer_size": 3213,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,7 +19,50 @@
 			"file": "views/top.erb",
 			"settings":
 			{
-				"buffer_size": 161,
+				"buffer_size": 166,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<html>\n<body>\n<b>MemeForge</b>\n<br />\n\n<%= yield %>\n\n<br />\n<a href='/'>Home</a>\n\n</body>\n</html>",
+			"file": "views/layout.erb",
+			"file_size": 98,
+			"file_write_time": 1358942255000000,
+			"settings":
+			{
+				"buffer_size": 97,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/bottom.erb",
+			"settings":
+			{
+				"buffer_size": 175,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/home.erb",
+			"settings":
+			{
+				"buffer_size": 224,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/mymemes.erb",
+			"settings":
+			{
+				"buffer_size": 148,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/meme.erb",
+			"settings":
+			{
+				"buffer_size": 192,
 				"line_ending": "Unix"
 			}
 		}
@@ -104,6 +91,23 @@
 	},
 	"file_history":
 	[
+		"/home/emilesilvis/Projects/execjs_speel/execjs.rb",
+		"/home/emilesilvis/Projects/Gemfile",
+		"/home/emilesilvis/Projects/execjs.rb",
+		"/home/emilesilvis/Projects/memeforge/views/mymemes.erb",
+		"/home/emilesilvis/Projects/memeforge/mxit.rb",
+		"/home/emilesilvis/Projects/memeforge/views/home.erb",
+		"/home/emilesilvis/Projects/aws-sdk-ruby/samples/config.yml",
+		"/home/emilesilvis/Projects/aws-sdk-ruby/samples/s3/upload_file.rb",
+		"/home/emilesilvis/Projects/memeforge/Gemfile",
+		"/home/emilesilvis/Projects/memeforge/views/feedback.erb",
+		"/home/emilesilvis/Projects/memeforge/views/bottom.erb",
+		"/home/emilesilvis/Projects/memeforge/views/top.erb",
+		"/home/emilesilvis/Projects/memeforge/views/image.erb",
+		"/home/emilesilvis/Projects/memeforge/views/meme.erb",
+		"/home/emilesilvis/Projects/pony_speel/pony.rb",
+		"/home/emilesilvis/Projects/pony_speel/Gemfile",
+		"/home/emilesilvis/Projects/cucumber_play/Gemfile",
 		"/home/emilesilvis/Projects/memeforge/public/meme-931",
 		"/home/emilesilvis/Projects/memeforge/public/275",
 		"/home/emilesilvis/Projects/memeforge/public/52",
@@ -126,6 +130,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"inspect",
+			"\"=>\"\",",
+			"Toby+Kurien",
 			":temp_file_name",
 			"meme",
 			"gedit.desktop",
@@ -149,7 +156,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -157,15 +164,15 @@
 					"file": "mf.rb",
 					"settings":
 					{
-						"buffer_size": 2296,
+						"buffer_size": 3213,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								142,
-								142
+								140,
+								140
 							]
 						],
 						"settings":
@@ -181,23 +188,23 @@
 				},
 				{
 					"buffer": 1,
-					"file": "/home/emilesilvis/Projects/cucumber_play/Gemfile",
+					"file": "views/top.erb",
 					"settings":
 					{
-						"buffer_size": 97,
+						"buffer_size": 166,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								59,
-								59
+								5,
+								5
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -207,23 +214,23 @@
 				},
 				{
 					"buffer": 2,
-					"file": "/home/emilesilvis/Projects/aws-sdk-ruby/samples/config.yml",
+					"file": "views/layout.erb",
 					"settings":
 					{
-						"buffer_size": 195,
+						"buffer_size": 97,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								155,
-								155
+								97,
+								97
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/YAML/YAML.tmLanguage"
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -233,23 +240,23 @@
 				},
 				{
 					"buffer": 3,
-					"file": "/home/emilesilvis/Projects/aws-sdk-ruby/samples/s3/upload_file.rb",
+					"file": "views/bottom.erb",
 					"settings":
 					{
-						"buffer_size": 1238,
+						"buffer_size": 175,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								643,
-								643
+								25,
+								25
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -259,23 +266,23 @@
 				},
 				{
 					"buffer": 4,
-					"file": "Gemfile",
+					"file": "views/home.erb",
 					"settings":
 					{
-						"buffer_size": 70,
+						"buffer_size": 224,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								190,
+								190
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -285,18 +292,18 @@
 				},
 				{
 					"buffer": 5,
-					"file": "views/meme.erb",
+					"file": "views/mymemes.erb",
 					"settings":
 					{
-						"buffer_size": 214,
+						"buffer_size": 148,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								82,
-								82
+								148,
+								148
 							]
 						],
 						"settings":
@@ -311,70 +318,18 @@
 				},
 				{
 					"buffer": 6,
-					"file": "views/home.erb",
+					"file": "views/meme.erb",
 					"settings":
 					{
-						"buffer_size": 90,
+						"buffer_size": 192,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								58,
-								58
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "views/image.erb",
-					"settings":
-					{
-						"buffer_size": 171,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "views/top.erb",
-					"settings":
-					{
-						"buffer_size": 161,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								188,
+								188
 							]
 						],
 						"settings":
