@@ -78,9 +78,7 @@ get '/mymemes' do
 end
 
 get '/allmemes' do
-	#use Rack::Auth::Basic, "Restricted Area" do |username, password|
-	#	[username, password] == ['admin', 'paashaas']
-	#end
+	protected!
 	@memes = []
 	s3 = AWS::S3.new
 	bucket = s3.buckets['emilesilvis']
@@ -118,7 +116,19 @@ helpers do
 			response = http.get("http://serve.mixup.hapnic.com/8215822")
 			return response.body
 		end
-	end	
+	end
+
+	def protected!
+    unless authorized?
+      response['WWW-Authenticate'] = %(Basic realm="Restricted Area")
+      throw(:halt, [401, "Not authorized\n"])
+    end
+  end
+
+  def authorized?
+    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == ['admin', 'paashaas']
+  end	
 end
 
 get '/auth' do
@@ -134,13 +144,5 @@ get '/allow' do
     end
 
     erb "Meme saved! <br /><a href='/'>Home</a>"
-
-end
-
-get '/foo' do
-
-
-
-"Nope!"
 
 end
