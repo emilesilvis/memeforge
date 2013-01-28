@@ -104,9 +104,18 @@ post '/feedback' do
 end
 
 get '/stats' do
+
+	@memes = []
 	s3 = AWS::S3.new
 	bucket = s3.buckets['emilesilvis']
-	erb 'Number of memes: ' + bucket.objects.count.to_s
+	bucket.objects.each do |object|
+		@memes.push(object.key)
+	end
+	@memes.map! do |meme|
+		meme.delete('memeforge/').slice(0,12)
+	end
+	
+	erb 'Number of memes: ' + @memes.count.to_s + ' <br />Number of users: ' + @memes.uniq.count.to_s + '<br />Average memes per user: ' + format('%.2f', @memes.count.to_f/@memes.uniq.count.to_f)
 
 end
 
