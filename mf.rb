@@ -78,6 +78,9 @@ get '/mymemes' do
 end
 
 get '/allmemes' do
+	use Rack::Auth::Basic, "Restricted Area" do |username, password|
+		[username, password] == ['admin', 'paashaas']
+	end
 	@memes = []
 	s3 = AWS::S3.new
 	bucket = s3.buckets['emilesilvis']
@@ -131,5 +134,13 @@ get '/allow' do
     end
 
     erb "Meme saved! <br /><a href='/'>Home</a>"
+
+end
+
+get '/foo' do
+
+
+
+"Nope!"
 
 end
