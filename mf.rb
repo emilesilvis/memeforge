@@ -130,6 +130,6 @@ get '/allow' do
 		RestClient.post 'http://@api.mxit.com/user/media/file/' + 'MemeForge' + '?fileName=' + 'meme-' + session[:file_name], file, :authorization => 'Bearer ' + JSON.load(response)['access_token']
     end
 
-    erb "Meme saved!"
+    erb "Meme saved! <br /><a href='/'>Home</a>"
 
 end
