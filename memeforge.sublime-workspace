@@ -11,7 +11,7 @@
 			"file": "mf.rb",
 			"settings":
 			{
-				"buffer_size": 3213,
+				"buffer_size": 3249,
 				"line_ending": "Unix"
 			}
 		},
@@ -46,7 +46,7 @@
 			"file": "views/home.erb",
 			"settings":
 			{
-				"buffer_size": 224,
+				"buffer_size": 288,
 				"line_ending": "Unix"
 			}
 		},
@@ -91,6 +91,7 @@
 	},
 	"file_history":
 	[
+		"/home/emilesilvis/Projects/nudity/Gemfile",
 		"/home/emilesilvis/Projects/execjs_speel/execjs.rb",
 		"/home/emilesilvis/Projects/Gemfile",
 		"/home/emilesilvis/Projects/execjs.rb",
@@ -164,15 +165,15 @@
 					"file": "mf.rb",
 					"settings":
 					{
-						"buffer_size": 3213,
+						"buffer_size": 3249,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								140,
-								140
+								176,
+								176
 							]
 						],
 						"settings":
@@ -269,15 +270,15 @@
 					"file": "views/home.erb",
 					"settings":
 					{
-						"buffer_size": 224,
+						"buffer_size": 288,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								190,
-								190
+								241,
+								241
 							]
 						],
 						"settings":
@@ -302,8 +303,8 @@
 						"selection":
 						[
 							[
-								148,
-								148
+								112,
+								112
 							]
 						],
 						"settings":
@@ -328,8 +329,8 @@
 						"selection":
 						[
 							[
-								188,
-								188
+								173,
+								173
 							]
 						],
 						"settings":

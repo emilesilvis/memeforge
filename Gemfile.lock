@@ -11,12 +11,15 @@ GEM
       multi_json (~> 1.0)
       multi_xml
     json (1.7.5)
+    mime-types (1.19)
     multi_json (1.4.0)
     multi_xml (0.5.1)
     nokogiri (1.5.6)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.3.3)
@@ -32,5 +35,6 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk
   gabba
+  rest-client
   shotgun
   sinatra
