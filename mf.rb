@@ -78,9 +78,9 @@ get '/mymemes' do
 end
 
 get '/allmemes' do
-	use Rack::Auth::Basic, "Restricted Area" do |username, password|
-		[username, password] == ['admin', 'paashaas']
-	end
+	#use Rack::Auth::Basic, "Restricted Area" do |username, password|
+	#	[username, password] == ['admin', 'paashaas']
+	#end
 	@memes = []
 	s3 = AWS::S3.new
 	bucket = s3.buckets['emilesilvis']
