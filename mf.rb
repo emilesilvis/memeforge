@@ -114,7 +114,7 @@ get '/stats' do
 		@memes.push(object.key)
 	end
 	@memes.map! do |meme|
-		meme.slice(0,12)
+		meme.delete('memeforge/').slice(0,12)
 	end
 	
 	erb 'Number of memes: ' + @memes.count.to_s + ' <br />Number of users: ' + @memes.uniq.count.to_s + '<br />Average memes per user: ' + format('%.2f', @memes.count.to_f/@memes.uniq.count.to_f)
