@@ -3,7 +3,7 @@
 #delete memes
 #put on github but remove AWS secret key
 #porn detector?
-#gallery / phone photo integration!
+#tests
 
 require 'sinatra'
 require 'fileutils'

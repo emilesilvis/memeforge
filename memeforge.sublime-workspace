@@ -3,69 +3,14 @@
 	{
 		"selected_items":
 		[
+			[
+				"redirec",
+				"redirect_uri"
+			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "mf.rb",
-			"settings":
-			{
-				"buffer_size": 3249,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/top.erb",
-			"settings":
-			{
-				"buffer_size": 166,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "<html>\n<body>\n<b>MemeForge</b>\n<br />\n\n<%= yield %>\n\n<br />\n<a href='/'>Home</a>\n\n</body>\n</html>",
-			"file": "views/layout.erb",
-			"file_size": 98,
-			"file_write_time": 1358942255000000,
-			"settings":
-			{
-				"buffer_size": 97,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/bottom.erb",
-			"settings":
-			{
-				"buffer_size": 175,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/home.erb",
-			"settings":
-			{
-				"buffer_size": 288,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/mymemes.erb",
-			"settings":
-			{
-				"buffer_size": 148,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/meme.erb",
-			"settings":
-			{
-				"buffer_size": 192,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -78,7 +23,7 @@
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 146.0
 	},
 	"distraction_free":
 	{
@@ -91,21 +36,26 @@
 	},
 	"file_history":
 	[
+		"/home/emilesilvis/Projects/mxitbroadcast/mb.rb",
+		"/home/emilesilvis/Projects/memeforge/mf.rb",
+		"/home/emilesilvis/Projects/http/rest_client/rest_client.rb",
+		"/home/emilesilvis/Projects/memeforge/views/top.erb",
+		"/home/emilesilvis/Projects/memeforge/views/layout.erb",
+		"/home/emilesilvis/Projects/memeforge/views/bottom.erb",
+		"/home/emilesilvis/Projects/memeforge/views/home.erb",
+		"/home/emilesilvis/Projects/memeforge/views/mymemes.erb",
+		"/home/emilesilvis/Projects/memeforge/views/meme.erb",
+		"/home/emilesilvis/Projects/memeforge/Gemfile",
+		"/home/emilesilvis/Projects/http/rest_client/Gemfile",
 		"/home/emilesilvis/Projects/nudity/Gemfile",
 		"/home/emilesilvis/Projects/execjs_speel/execjs.rb",
 		"/home/emilesilvis/Projects/Gemfile",
 		"/home/emilesilvis/Projects/execjs.rb",
-		"/home/emilesilvis/Projects/memeforge/views/mymemes.erb",
 		"/home/emilesilvis/Projects/memeforge/mxit.rb",
-		"/home/emilesilvis/Projects/memeforge/views/home.erb",
 		"/home/emilesilvis/Projects/aws-sdk-ruby/samples/config.yml",
 		"/home/emilesilvis/Projects/aws-sdk-ruby/samples/s3/upload_file.rb",
-		"/home/emilesilvis/Projects/memeforge/Gemfile",
 		"/home/emilesilvis/Projects/memeforge/views/feedback.erb",
-		"/home/emilesilvis/Projects/memeforge/views/bottom.erb",
-		"/home/emilesilvis/Projects/memeforge/views/top.erb",
 		"/home/emilesilvis/Projects/memeforge/views/image.erb",
-		"/home/emilesilvis/Projects/memeforge/views/meme.erb",
 		"/home/emilesilvis/Projects/pony_speel/pony.rb",
 		"/home/emilesilvis/Projects/pony_speel/Gemfile",
 		"/home/emilesilvis/Projects/cucumber_play/Gemfile",
@@ -157,192 +107,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "mf.rb",
-					"settings":
-					{
-						"buffer_size": 3249,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								176,
-								176
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "views/top.erb",
-					"settings":
-					{
-						"buffer_size": 166,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5,
-								5
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "views/layout.erb",
-					"settings":
-					{
-						"buffer_size": 97,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								97,
-								97
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "views/bottom.erb",
-					"settings":
-					{
-						"buffer_size": 175,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								25,
-								25
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "views/home.erb",
-					"settings":
-					{
-						"buffer_size": 288,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								241,
-								241
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "views/mymemes.erb",
-					"settings":
-					{
-						"buffer_size": 148,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								112,
-								112
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "views/meme.erb",
-					"settings":
-					{
-						"buffer_size": 192,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								173,
-								173
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -377,6 +143,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
 	"replace":
 	{
 		"height": 64.0
