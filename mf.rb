@@ -4,6 +4,8 @@
 #put on github but remove AWS secret key
 #porn detector?
 #tests
+#allow for space in top and bottom text 
+#stats logic is wrong
 
 require 'sinatra'
 require 'fileutils'
@@ -112,7 +114,7 @@ get '/stats' do
 		@memes.push(object.key)
 	end
 	@memes.map! do |meme|
-		meme.delete('memeforge/').slice(0,12)
+		meme.slice(0,12)
 	end
 	
 	erb 'Number of memes: ' + @memes.count.to_s + ' <br />Number of users: ' + @memes.uniq.count.to_s + '<br />Average memes per user: ' + format('%.2f', @memes.count.to_f/@memes.uniq.count.to_f)
@@ -149,9 +151,25 @@ get '/allow' do
 	response = RestClient.post 'https://a1af3b1da78d4d9ba635408cdf35d2d8:3720fb8ea26c4cd3a349bb006bb283b6@auth.mxit.com/token','grant_type=authorization_code&code=' + params[:code] + '&redirect_uri=http://safe-wildwood-3459.herokuapp.com/allow', :content_type => 'application/x-www-form-urlencoded' 
 
 	File.open('public/meme-' + session[:file_name], "rb") do |file|
-		RestClient.post 'http://@api.mxit.com/user/media/file/' + 'MemeForge' + '?fileName=' + 'meme-' + session[:file_name], file, :authorization => 'Bearer ' + JSON.load(response)['access_token']
+		RestClient.post 'http://@api.mxit.com/user/media/file/' + 'MemeForge' + '?fileName=' + 'meme-' + session[:file_name], file, :authorization => 'Bearer ' + JSON.load(response)['access_token'] #is the @ there right?
     end
 
     erb "Meme saved! <br /><a href='/'>Home</a>"
+
+end
+
+get '/users' do
+
+	@memes = []
+	s3 = AWS::S3.new
+	bucket = s3.buckets['emilesilvis']
+	bucket.objects.each do |object|
+		@memes.push(object.key)
+	end
+	@memes.map! do |meme|
+		meme.slice(10,12)
+	end
+	
+	erb @memes.uniq.to_s
 
 end
