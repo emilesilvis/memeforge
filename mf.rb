@@ -44,13 +44,13 @@ end
 
 post '/top' do
 	GoogleAnalyticsTracker.page_view("Top","/top")
-	session[:top] = params['top'] #Save value of 'top' input to session object
+	session[:top] = URI.escape(params['top']) 
 	erb :bottom
 end
 
 post '/bottom' do
 	GoogleAnalyticsTracker.page_view("Bottom","/bottom")
-	session[:bottom] = params['bottom'] #Save value of 'bottom' input to session object
+	session[:bottom] = URI.escape(params['bottom'])
 	Net::HTTP.start("memecaptain.com") do |http|
 		response = http.get("http://memecaptain.com/i?u=http://safe-wildwood-3459.herokuapp.com/temp-" + session[:file_name] + "&t1=" + session[:top] + "&t2=" + session[:bottom])
 		open('public/meme-' + session[:file_name], "wb") do |file|
@@ -102,7 +102,7 @@ post '/feedback' do
 	  :from => 'emile@silvis.co.za',
 	  :to => 'emile@silvis.co.za',
 	  :body_text => params['feedback'] + ' - ' + @mxit.user_id)
-	erb "Thanks! :)"
+	erb "Thanks! :) <br /><a href='/'>Home</a>"
 end
 
 get '/stats' do
