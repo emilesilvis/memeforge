@@ -37,7 +37,7 @@ get '/image' do
 end
 
 post '/image' do
-	session[:file_name] = Time.now.year.to_s + '-' + Time.now.month.to_s + '-' + Time.now.day.to_s + '-' + Time.now.hour.to_s + '-' + Time.now.min.to_s + '-' + Time.now.sec.to_s + '.jpg'
+	session[:file_name] = Time.now.day.to_s + '-' + Time.now.month.to_s + '-' + Time.now.year.to_s + '-' + Time.now.hour.to_s + '-' + Time.now.min.to_s + '-' + Time.now.sec.to_s + '.jpg'
 	FileUtils.move(params['file'][:tempfile].path,'public/temp-' + session[:file_name], :force => true)
 	erb :top
 end
@@ -63,7 +63,7 @@ post '/bottom' do
 	@mxit = Mxit.new(request.env)
 	object = bucket.objects['memeforge/' + @mxit.user_id + '/' + session[:file_name]]
 	object.write(Pathname.new('public/meme-' + session[:file_name]))
-	#FileUtils.remove('public/meme-' + session[:file_name]) I'm still saving from here
+	
 	erb :meme
 end
 
@@ -148,11 +148,13 @@ end
 
 get '/allow' do
 
-	response = RestClient.post 'https://a1af3b1da78d4d9ba635408cdf35d2d8:3720fb8ea26c4cd3a349bb006bb283b6@auth.mxit.com/token','grant_type=authorization_code&code=' + params[:code] + '&redirect_uri=http://safe-wildwood-3459.herokuapp.com/allow', :content_type => 'application/x-www-form-urlencoded' 
+	response = RestClient.post 'https://c162a96bca7e4892acf52904ebc339ab:050833abcd074cae810d4feb88c61ebc@auth.mxit.com/token','grant_type=authorization_code&code=' + params[:code] + '&redirect_uri=http://safe-wildwood-3459.herokuapp.com/allow', :content_type => 'application/x-www-form-urlencoded' 
 
 	File.open('public/meme-' + session[:file_name], "rb") do |file|
-		RestClient.post 'http://@api.mxit.com/user/media/file/' + 'MemeForge' + '?fileName=' + 'meme-' + session[:file_name], file, :authorization => 'Bearer ' + JSON.load(response)['access_token'] #is the @ there right?
+		RestClient.post 'http://api.mxit.com/user/media/file/' + 'MemeForge' + '?fileName=' + 'meme-' + session[:file_name], file, :authorization => 'Bearer ' + JSON.load(response)['access_token']
     end
+
+    FileUtils.remove('public/meme-' + session[:file_name])
 
     erb "Meme saved! <br /><a href='/'>Home</a>"
 
