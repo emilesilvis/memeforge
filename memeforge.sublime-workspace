@@ -23,7 +23,7 @@
 	},
 	"console":
 	{
-		"height": 146.0
+		"height": 356.0
 	},
 	"distraction_free":
 	{
@@ -36,15 +36,19 @@
 	},
 	"file_history":
 	[
-		"/home/emilesilvis/Projects/mxitbroadcast/mb.rb",
+		"/home/emilesilvis/Projects/memeforge/.gitignore",
 		"/home/emilesilvis/Projects/memeforge/mf.rb",
-		"/home/emilesilvis/Projects/http/rest_client/rest_client.rb",
-		"/home/emilesilvis/Projects/memeforge/views/top.erb",
-		"/home/emilesilvis/Projects/memeforge/views/layout.erb",
-		"/home/emilesilvis/Projects/memeforge/views/bottom.erb",
-		"/home/emilesilvis/Projects/memeforge/views/home.erb",
-		"/home/emilesilvis/Projects/memeforge/views/mymemes.erb",
+		"/home/emilesilvis/Projects/oauth_speel/Gemfile",
+		"/home/emilesilvis/Projects/memeforge/views/meme2.erb",
+		"/home/emilesilvis/Projects/memeforge/views/feedback.erb",
 		"/home/emilesilvis/Projects/memeforge/views/meme.erb",
+		"/home/emilesilvis/Projects/memeforge/views/bottom.erb",
+		"/home/emilesilvis/Projects/memeforge/views/top.erb",
+		"/home/emilesilvis/Projects/memeforge/views/mymemes.erb",
+		"/home/emilesilvis/Projects/mxitbroadcast/mb.rb",
+		"/home/emilesilvis/Projects/http/rest_client/rest_client.rb",
+		"/home/emilesilvis/Projects/memeforge/views/layout.erb",
+		"/home/emilesilvis/Projects/memeforge/views/home.erb",
 		"/home/emilesilvis/Projects/memeforge/Gemfile",
 		"/home/emilesilvis/Projects/http/rest_client/Gemfile",
 		"/home/emilesilvis/Projects/nudity/Gemfile",
@@ -54,7 +58,6 @@
 		"/home/emilesilvis/Projects/memeforge/mxit.rb",
 		"/home/emilesilvis/Projects/aws-sdk-ruby/samples/config.yml",
 		"/home/emilesilvis/Projects/aws-sdk-ruby/samples/s3/upload_file.rb",
-		"/home/emilesilvis/Projects/memeforge/views/feedback.erb",
 		"/home/emilesilvis/Projects/memeforge/views/image.erb",
 		"/home/emilesilvis/Projects/pony_speel/pony.rb",
 		"/home/emilesilvis/Projects/pony_speel/Gemfile",
@@ -81,6 +84,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"JSON",
+			"json\n\n",
 			"inspect",
 			"\"=>\"\",",
 			"Toby+Kurien",
