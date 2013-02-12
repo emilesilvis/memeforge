@@ -21,9 +21,9 @@ enable :sessions
 configure do
 	GoogleAnalyticsTracker = Gabba::Gabba.new("UA-35092077-4","http://safe-wildwood-3459.herokuapp.com")
 	AWS.config(
-	  :access_key_id => 'AKIAJ47AJAI7J7EGRDAQ',
-	  :secret_access_key => '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')
-
+	  :access_key_id => ENV['AWS_KEY'],
+	  :secret_access_key => ENV['AWS_SECRET']
+	)
 end
 
 get '/' do
@@ -138,7 +138,7 @@ helpers do
 
   def authorized?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == ['admin', 'paashaas']
+    @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == ['admin', ENV['MEME_SECRET']]
   end	
 end
 
