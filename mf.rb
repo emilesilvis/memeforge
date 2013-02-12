@@ -1,12 +1,3 @@
-#need to move stuff to helpers
-#display banner and cache for a minute
-#delete memes
-#put on github but remove AWS secret key
-#porn detector?
-#tests
-#allow for space in top and bottom text 
-#stats logic is wrong
-
 require 'sinatra'
 require 'fileutils'
 require_relative "mxit.rb" #Toby's Mxit library
