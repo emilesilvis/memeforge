@@ -11,6 +11,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "mf.rb",
+			"settings":
+			{
+				"buffer_size": 4767,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/emile/Projects/WolframMu/Gemfile",
+			"settings":
+			{
+				"buffer_size": 60,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -36,6 +52,12 @@
 	},
 	"file_history":
 	[
+		"/home/emile/Projects/memeforge/mf.rb",
+		"/home/emile/Projects/memeforge/Gemfile",
+		"/home/emile/Projects/memeforge/.gitignore",
+		"/home/emile/Projects/memeforge/config.yml",
+		"/home/emile/Projects/memeforge/foo.yml",
+		"/home/emile/Projects/memeforge/views/home.erb",
 		"/home/emilesilvis/Projects/memeforge/.gitignore",
 		"/home/emilesilvis/Projects/memeforge/mf.rb",
 		"/home/emilesilvis/Projects/oauth_speel/Gemfile",
@@ -112,8 +134,62 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "mf.rb",
+					"settings":
+					{
+						"buffer_size": 4767,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								167,
+								167
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 408.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/emile/Projects/WolframMu/Gemfile",
+					"settings":
+					{
+						"buffer_size": 60,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18,
+								18
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
