@@ -163,7 +163,7 @@ get '/allow2' do
 	response = RestClient.post 'https://c162a96bca7e4892acf52904ebc339ab:050833abcd074cae810d4feb88c61ebc@auth.mxit.com/token','grant_type=authorization_code&code=' + params[:code] + '&redirect_uri=http://safe-wildwood-3459.herokuapp.com/allow2', :content_type => 'application/x-www-form-urlencoded' 
 
 	open(params[:state]) do |file|
-		RestClient.post 'http://api.mxit.com/user/media/file/' + 'MemeForge' + '?fileName=' + params[:state][params[:state].length - 21,[params[:state].length], file, :authorization => 'Bearer ' + JSON.load(response)['access_token']
+		RestClient.post 'http://api.mxit.com/user/media/file/' + 'MemeForge' + '?fileName=' + params[:state], file, :authorization => 'Bearer ' + JSON.load(response)['access_token']
     end
 
 
