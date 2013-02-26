@@ -1,5 +1,8 @@
 <% 	@memes.each do |meme| %>
 <img src=<%= 'https://s3.amazonaws.com/emilesilvis/' + meme %> width="300px" height="auto" />
+<ul>
+<li><a href=<%='/auth2?img_url=https://s3.amazonaws.com/emilesilvis/' + meme %> >Save meme<a/></li>
+</ul>
 <br />
 <% end %>
 <a href="/">Home</a>

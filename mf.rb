@@ -6,6 +6,7 @@ require 'net/http'
 require 'aws-sdk'
 require 'rest_client'
 require 'json'
+require 'open-uri'
 
 enable :sessions
 
@@ -146,6 +147,25 @@ get '/allow' do
     end
 
     FileUtils.remove('public/meme-' + session[:file_name])
+
+    erb "Meme saved! <br /><a href='/'>Home</a>"
+
+end
+
+#Save from mymems
+
+get '/auth2' do
+	redirect to('https://auth.mxit.com/authorize?response_type=code&client_id=c162a96bca7e4892acf52904ebc339ab&redirect_uri=http://safe-wildwood-3459.herokuapp.com/allow2&scope=content/write&state=' + params[:img_url])
+end
+
+get '/allow2' do
+
+	response = RestClient.post 'https://c162a96bca7e4892acf52904ebc339ab:050833abcd074cae810d4feb88c61ebc@auth.mxit.com/token','grant_type=authorization_code&code=' + params[:code] + '&redirect_uri=http://safe-wildwood-3459.herokuapp.com/allow2', :content_type => 'application/x-www-form-urlencoded' 
+
+	open(params[:state]) do |file|
+		RestClient.post 'http://api.mxit.com/user/media/file/' + 'MemeForge' + '?fileName=' + params[:state], file, :authorization => 'Bearer ' + JSON.load(response)['access_token']
+    end
+
 
     erb "Meme saved! <br /><a href='/'>Home</a>"
 
