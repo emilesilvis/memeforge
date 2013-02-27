@@ -55,6 +55,13 @@ post '/bottom' do
 	@mxit = Mxit.new(request.env)
 	object = bucket.objects['memeforge/' + @mxit.user_id + '/' + session[:file_name]]
 	object.write(Pathname.new('public/meme-' + session[:file_name]))
+
+	#logs
+	object = bucket.objects['memeforge/log.json']
+	#log = {Time.now => {:user => Mxit.new(request.env).user_id, :activity => 'Created meme' ,:meme => {:name => session[:file_name], :top => session[:top], :bottom => session[:bottom]}}}
+	log = JSON.parse(object.read)
+	log[Time.now] = {:user => Mxit.new(request.env).user_id, :activity => 'Created meme' ,:meme => {:name => session[:file_name]}, :top => session[:top], :bottom => session[:bottom]}
+	object.write(log.to_json)
 	
 	erb :meme
 end
@@ -99,17 +106,26 @@ end
 
 get '/stats' do
 
-	@memes = []
 	s3 = AWS::S3.new
 	bucket = s3.buckets['emilesilvis']
-	bucket.objects.each do |object|
-		@memes.push(object.key)
+	object = bucket.objects['memeforge/log.json']
+	log = JSON.parse(object.read)
+
+	created_memes = []
+	log.values.each do |value|
+		if value["activity"] == "Created meme"
+			created_memes.push(value)
+		end
 	end
-	@memes.map! do |meme|
-		meme.delete('memeforge/').slice(0,12)
+
+	users = []
+	created_memes.each do |value|
+		users.push(value["user"])
 	end
-	
-	erb 'Number of memes: ' + @memes.count.to_s + ' <br />Number of users: ' + @memes.uniq.count.to_s + '<br />Average memes per user: ' + format('%.2f', @memes.count.to_f/@memes.uniq.count.to_f)
+
+	#f = (created_memes.count/users.uniq.count).to_f
+
+	erb 'Number of memes: ' + created_memes.count.to_s + ' <br />Number of users: ' + users.uniq.count.to_s + '<br />Average memes per user: ' + format('%.2f', (created_memes.count.to_f/users.uniq.count.to_f))
 
 end
 
@@ -168,21 +184,5 @@ get '/allow2' do
 
 
     erb "Meme saved! <br /><a href='/'>Home</a>"
-
-end
-
-get '/users' do
-
-	@memes = []
-	s3 = AWS::S3.new
-	bucket = s3.buckets['emilesilvis']
-	bucket.objects.each do |object|
-		@memes.push(object.key)
-	end
-	@memes.map! do |meme|
-		meme.slice(10,12)
-	end
-	
-	erb @memes.uniq.to_s
 
 end
