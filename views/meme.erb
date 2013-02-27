@@ -1,6 +1,6 @@
-<img src=<%= 'https://s3.amazonaws.com/emilesilvis/memeforge/' + @mxit.user_id + '/' + session[:file_name] %> width="300px" height="auto">
-<br>
-<ul>
-<li><a href="/auth">Save meme<a/></li>
-<li><a href="/">Home<a/></li>
-</ul>
+<div>
+	<img src=<%= 'https://s3.amazonaws.com/emilesilvis/memeforge/' + @mxit.user_id + '/' + session[:file_name] %> width="300px" height="auto">
+</div>
+<div>
+	<a href=<%='/auth' + meme %> >s</a>) Save meme
+</div>
