@@ -184,3 +184,15 @@ get '/allow2' do
     erb "Meme saved! :)"
 
 end
+
+get '/users' do
+	@users = []
+	s3 = AWS::S3.new
+	bucket = s3.buckets['emilesilvis']
+	object = bucket.objects['memeforge/log.json']
+	log = JSON.parse(object.read)
+	log.values.each do |value|
+		@users.push(value['user'])
+	end
+	erb :users
+end
