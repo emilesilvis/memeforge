@@ -151,12 +151,12 @@ helpers do
 end
 
 get '/auth' do
-	redirect to('https://auth.mxit.com/authorize?response_type=code&client_id=c162a96bca7e4892acf52904ebc339ab&redirect_uri=http://127.0.0.1:9393/allow&scope=content/write&state=your_state')
+	redirect to('https://auth.mxit.com/authorize?response_type=code&client_id=c162a96bca7e4892acf52904ebc339ab&redirect_uri=http://safe-wildwood-3459.herokuapp.com/allow&scope=content/write&state=your_state')
 end
 
 get '/allow' do
 
-	response = RestClient.post 'https://c162a96bca7e4892acf52904ebc339ab:050833abcd074cae810d4feb88c61ebc@auth.mxit.com/token','grant_type=authorization_code&code=' + params[:code] + '&redirect_uri=http://127.0.0.1:9393/allow', :content_type => 'application/x-www-form-urlencoded' 
+	response = RestClient.post 'https://c162a96bca7e4892acf52904ebc339ab:050833abcd074cae810d4feb88c61ebc@auth.mxit.com/token','grant_type=authorization_code&code=' + params[:code] + '&redirect_uri=http://safe-wildwood-3459.herokuapp.com/allow', :content_type => 'application/x-www-form-urlencoded' 
 
 	File.open('public/meme-' + session[:file_name], "rb") do |file|
 		RestClient.post 'http://api.mxit.com/user/media/file/' + 'MemeForge' + '?fileName=' + 'meme-' + session[:file_name], file, :authorization => 'Bearer ' + JSON.load(response)['access_token']
