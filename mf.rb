@@ -101,7 +101,7 @@ post '/feedback' do
 	  :from => 'emile@silvis.co.za',
 	  :to => 'emile@silvis.co.za',
 	  :body_text => params['feedback'] + ' - ' + @mxit.user_id)
-	erb "Thanks! :) <br /><a href='/'>Home</a>"
+	erb "Thanks! :)"
 end
 
 get '/stats' do
@@ -122,8 +122,6 @@ get '/stats' do
 	created_memes.each do |value|
 		users.push(value["user"])
 	end
-
-	#f = (created_memes.count/users.uniq.count).to_f
 
 	erb 'Number of memes: ' + created_memes.count.to_s + ' <br />Number of users: ' + users.uniq.count.to_s + '<br />Average memes per user: ' + format('%.2f', (created_memes.count.to_f/users.uniq.count.to_f))
 
