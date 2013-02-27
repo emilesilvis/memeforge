@@ -1,8 +1,15 @@
-<% 	@memes.each do |meme| %>
-<img src=<%= 'https://s3.amazonaws.com/emilesilvis/' + meme %> width="300px" height="auto" />
-<ul>
-<li><a href=<%='/auth2?img_url=https://s3.amazonaws.com/emilesilvis/' + meme %> >Save meme<a/></li>
-</ul>
+<div>
+	<%= erb :nav %>
+</div>
 <br />
-<% end %>
-<a href="/">Home</a>
+<div>
+	<% 	@memes.each do |meme| %>
+	<div>
+		<img src=<%= 'https://s3.amazonaws.com/emilesilvis/' + meme %> width="300px" height="auto" />
+	</div>
+	<div>
+		<a href=<%='/auth2?img_url=https://s3.amazonaws.com/emilesilvis/' + meme %> >s</a>) Save meme
+	</div>
+	<br />
+	<% end %>
+</div>

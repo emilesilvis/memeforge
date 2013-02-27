@@ -20,7 +20,7 @@ end
 
 get '/' do
 	GoogleAnalyticsTracker.page_view("Home","/")
-	erb :home, :layout => false
+	erb :home
 end
 
 get '/image' do
@@ -55,6 +55,8 @@ post '/bottom' do
 	@mxit = Mxit.new(request.env)
 	object = bucket.objects['memeforge/' + @mxit.user_id + '/' + session[:file_name]]
 	object.write(Pathname.new('public/meme-' + session[:file_name]))
+
+	FileUtils.remove('public/meme-' + session[:file_name])
 
 	#logs
 	object = bucket.objects['memeforge/log.json']
@@ -164,11 +166,11 @@ get '/allow' do
 
     FileUtils.remove('public/meme-' + session[:file_name])
 
-    erb "Meme saved! <br /><a href='/'>Home</a>"
+    erb "Meme saved! :)"
 
 end
 
-#Save from mymems
+#Save from mymemes
 
 get '/auth2' do
 	redirect to('https://auth.mxit.com/authorize?response_type=code&client_id=c162a96bca7e4892acf52904ebc339ab&redirect_uri=http://safe-wildwood-3459.herokuapp.com/allow2&scope=content/write&state=' + params[:img_url])
@@ -183,6 +185,6 @@ get '/allow2' do
     end
 
 
-    erb "Meme saved! <br /><a href='/'>Home</a>"
+    erb "Meme saved! :)"
 
 end
